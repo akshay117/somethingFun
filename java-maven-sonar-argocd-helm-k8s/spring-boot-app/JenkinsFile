@@ -58,7 +58,15 @@ pipeline {
                     git config user.name "Akshay V Anil"
                     BUILD_NUMBER=${BUILD_NUMBER}
                     pwd
-                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
+
+                    echo "Contents of deployment.yml before change:"
+                    cat java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+
+                   # Replace placeholder in deployment file
+                   sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
+                   # Print the contents of the file after the change
+                   echo "Contents of deployment.yml after change:"
+                   cat java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml         
                     git add /var/lib/jenkins/workspace/UltimateJava/SomethingFun/java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
                     git status
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
