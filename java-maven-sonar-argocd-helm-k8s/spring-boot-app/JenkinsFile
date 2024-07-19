@@ -70,5 +70,17 @@ pipeline {
             }
         }
     }
-}
+ stage('Deploy to Server') {
+            steps {
+                script {
+                    sh '''
+                        docker pull akshay117711/ultimate-cicd:${BUILD_NUMBER}
+                        docker stop backenddemo || true
+                        docker rm backenddemo || true
+                        docker run -d --name backenddemo -p 8081:8081 akshay117711/ultimate-cicd:${BUILD_NUMBER}
+                    '''
+                }
+          }
+      }
+  }
 }
