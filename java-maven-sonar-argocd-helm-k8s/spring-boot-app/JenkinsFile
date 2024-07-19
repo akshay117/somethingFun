@@ -58,7 +58,7 @@ pipeline {
                     git config user.name "Akshay V Anil"
                     BUILD_NUMBER=${BUILD_NUMBER}
                     git pull
-                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" deployment.yml
+                    sed -i "s/replaceTag/${BUILD_NUMBER}/g" deployment.yml
                     echo "Contents of deployment.yml after change:"
                     cat deployment.yml
                     git add deployment.yml
