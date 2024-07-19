@@ -69,7 +69,7 @@ pipeline {
 
                    # Print the contents 
                     echo "Contents of deployment.yml after change:"
-                    cat java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml 
+                    cat deployment.yml
 
                     git add /var/lib/jenkins/workspace/UltimateJava/SomethingFun/java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
                     git status
