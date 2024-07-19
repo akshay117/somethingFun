@@ -59,7 +59,7 @@ pipeline {
                     BUILD_NUMBER=${BUILD_NUMBER}
                     ReplaceTag=$((BUILD_NUMBER - 1))
                     git pull
-                    sed -i "s/ReplaceTag/${BUILD_NUMBER}/g" deployment.yml
+                    sed -i "s/${ReplaceTag}/${BUILD_NUMBER}/g" deployment.yml
                     echo "Contents of deployment.yml after change:"
                     cat deployment.yml
                     git add deployment.yml
