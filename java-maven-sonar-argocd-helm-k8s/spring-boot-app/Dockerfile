@@ -1,13 +1,11 @@
-# You can change this base image to anything else
-# But make sure to use the correct version of Java
-FROM adoptopenjdk/openjdk11:alpine-jre
+# Use an ARM64 base image for OpenJDK 11
+FROM arm64v8/openjdk:11-jre-slim
 
-# Simply the artifact path
-#ARG artifact=target/spring-boot-web.jar
-
+# Set the working directory
 WORKDIR /opt/app
 
+# Copy the Spring Boot application jar to the container
 COPY target/spring-boot-web.jar app.jar
 
-# This should not be changed
+# Set the entrypoint to run the Spring Boot application
 ENTRYPOINT ["java","-jar","app.jar"]
